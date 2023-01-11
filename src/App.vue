@@ -1,10 +1,26 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+import AppMain from './components/AppMain.vue'
+import AppHeader from './components/AppHeader.vue'
+
+export default{
+  components: {
+    AppHeader,
+    AppMain,
+  }
+}
 </script>
 
 <template>
+
+  <header>
+    <AppHeader />
+  </header>
+
+
+  <main>
+    <AppMain />
+  </main>
   
-  <HelloWorld />
 </template>
 
 <style lang="scss">
