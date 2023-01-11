@@ -1,50 +1,55 @@
 <script>
 import { store } from '../../store';
-import axios from 'axios';
+import AppLoader from '../components/AppLoader.vue';
 
 export default {
     name: 'AppMain',
+    components: {
+        AppLoader,
+  },
     data() {
         return {
             store,
-            cardsList : [],
+            isLoading : true,
         }
     },
-    methods:{
-        getCharacters(){
-            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0', {
-            })
-            .then((response) => { 
-                console.log(response.data.data[0].archetype)
-                this.cardsList = response.data.data;
-            })
+    methods: {
+        changeLoading (){
+            this.isLoading = false;
         }
     },
     created(){
-        this.getCharacters();
+        setTimeout(this.changeLoading, 1500)
     }
 }
 </script>
 
 <template>
     <div id="main-wrapper" class="container-fluid py-5">
-        <div class="container p-5">
-            <p class="m-0 ps-3 d-flex align-items-center">
-                Found 39 cards
-            </p>
-            <section id="cards-container" class="d-flex flex-wrap justify-content-between mb-2">
-                <div v-for="card in cardsList" class="my-card text-center">
-                    <img :src="card.card_images[0].image_url" alt="">
-                    <p class="name mt-1">
-                        {{card.name}}
+        <AppLoader v-if="isLoading" />
+        <div v-else class="container p-5">
+            <div class="row">
+                <div id="results-number" class="col-12 d-flex align-items-center">
+                    <p class="m-0">
+                        Found {{ store.cardsList.length }} cards
                     </p>
-                    <p class="type">
-                        {{card.archetype}}
-                    </p>
-                    
+                </div>
+            </div>
+            
+            <section id="cards-container" class="my-3">
+                <div class="row d-flex justify-content-around">
+                    <div v-for="card in store.cardsList" class="col-12 col-sm-6 col-md-4 col-lg-3 col-xxl-2 my-card text-center p-2 m-1">
+                        <img :src="card.card_images[0].image_url" alt="" class="img-fluid">
+                        <p class="name my-2">
+                            {{card.name}}
+                        </p>
+                        <p class="type mb-2">
+                            {{card.archetype}}
+                        </p>
+                    </div>
                 </div>
             </section>
-
+            
         </div>        
     </div>
 </template>
@@ -57,40 +62,30 @@ export default {
             background-color: white;
             border-radius: 10px;
 
-            p:first-child{
-                color: white;
+            #results-number{
+                height: 75px;
                 background-color: rgb(32,37,41);
-                height: 70px;
+                border-radius: 10px;
+
+                p:first-child{
+                color: white;
+            }
             }
 
             .my-card{
-                height: 430px;
-                width: calc(100% / 5 - 15px);
-                margin: 15px 0;
                 background-color: rgb(212,143,56);
-                position: relative;
                 border-radius: 10px;
-
-                img{
-                    width: 100%;
-                }
 
                 .name{
                     color: white;
                     font-weight: bold;
+                    height: 50px;
                 }
 
                 .type{
                     color: black;
-                    position: absolute;
-                    left: 50%;
-                    bottom: 10px;
-                    transform: translate(-50%);
                 }
-                
             }
-            
         }
-        
     }
 </style>

@@ -16,7 +16,6 @@ export default{
     <AppHeader />
   </header>
 
-
   <main>
     <AppMain />
   </main>
@@ -24,9 +23,8 @@ export default{
 </template>
 
 <style lang="scss">
-
 @use './styles/partials/variable' as *;
 @use './bootstrap/scss/bootstrap.scss' as *;
 @use './styles/general.scss' as *;
-
+@use './ldloader/index.css' as *;
 </style>
