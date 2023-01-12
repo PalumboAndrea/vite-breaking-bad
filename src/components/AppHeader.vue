@@ -17,8 +17,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../styles/partials/variable.scss' as *;
+
   #header-wrapper{
-    height: 100px;
+    height: $header-height;
 
     img{
       height: 40px;

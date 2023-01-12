@@ -11,9 +11,9 @@ export default {
 </script>
 
 <template>
-    <div class="container">
+    <div class="container-fluid d-flex justify-content-center">
         <div class="row">
-            <div id="select-container" class="col-4 pb-3" :class="(selected != null) ? 'mb-3' : ''">
+            <div id="select-container" class="pb-3" :class="(selected != null) ? 'mb-3' : ''">
                 <div v-if="selected == null" class="my-3">
                     Seleziona una categoria:
                 </div>
@@ -33,5 +33,6 @@ export default {
     #select-container{
         background-color: white;
         border-radius: 10px;
+        width: 400px;
     }
 </style>

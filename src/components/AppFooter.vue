@@ -18,9 +18,11 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../styles/partials/variable.scss' as *;
+
     div:first-child{
         background-color: rgb(32,37,41);
-        height: 80px;
+        height: 10vh;
 
         p{
             color: white;

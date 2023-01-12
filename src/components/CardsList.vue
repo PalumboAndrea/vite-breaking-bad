@@ -27,18 +27,25 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-    .my-card{
-        background-color: rgb(212,143,56);
-        border-radius: 10px;
+    #cards-container{
+        height: 80%;
+        overflow: auto;
 
-        .name{
-            color: white;
-            font-weight: bold;
-            height: 50px;
-        }
+        .my-card{
+            background-color: rgb(212,143,56);
+            border-radius: 10px;
 
-        .type{
-            color: black;
+            .name{
+                color: white;
+                font-weight: bold;
+                height: 50px;
+            }
+
+            .type{
+                color: black;
+            }
         }
     }
+
+    
 </style>

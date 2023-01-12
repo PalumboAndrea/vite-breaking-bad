@@ -23,16 +23,13 @@ export default {
             this.isLoading = false;
         },
         searchedCharacter(selectedCategory){
-            console.log(this.store.cardsList)
             axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${selectedCategory}`, {
               params: {
                 category: selectedCategory,
               }
             })
             .then((response) => {
-                console.log(this.store.cardsList)
                 this.store.cardsList = response.data.data; 
-                console.log(this.store.cardsList)
             })
         }
     },
@@ -43,9 +40,9 @@ export default {
 </script>
 
 <template>
-    <div id="main-wrapper" class="container-fluid py-5">
+    <div id="main-wrapper" class="container-fluid pt-3 pb-5">
        
-        <div class="wrapper">
+        <div class="wrapper m-0">
             <SelectCategory 
             @selectedCharacter="searchedCharacter"/>
             <div id="results-number-container" class="container px-5 pt-4 pb-2" v-if="store.cardsList.length > 0">
@@ -64,8 +61,11 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../styles/partials/variable.scss' as *;
+
     #main-wrapper{
         background-color: rgb(212,143,56);
+        height: $main-height;
 
         .wrapper{
             height: 100%;
@@ -74,7 +74,6 @@ export default {
             background-color: white;
             border-radius: 10px;
             height: 85%;
-            overflow: auto;
 
                 #results-number{
                     height: 75px;
