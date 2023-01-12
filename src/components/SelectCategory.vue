@@ -13,7 +13,7 @@ export default {
 <template>
     <div class="container">
         <div class="row">
-            <div id="select-container" class="col-4 mb-3 pb-3">
+            <div id="select-container" class="col-4 pb-3" :class="(selected != null) ? 'mb-3' : ''">
                 <div v-if="selected == null" class="my-3">
                     Seleziona una categoria:
                 </div>
