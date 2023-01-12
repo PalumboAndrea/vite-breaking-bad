@@ -21,14 +21,13 @@ export default {
             this.isLoading = false;
         },
         searchedCharacter(selectedCategory){
-            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0', {
+            axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${selectedCategory}`, {
               params: {
                 category: selectedCategory,
               }
             })
             .then((response) => {
-                console.log(selectedCategory)
-                console.log(response.data.data[0].archetype)
+                this.store.cardsList = response.data.data; 
             })
 
         },
@@ -45,8 +44,7 @@ export default {
         }
     },
     created(){
-        setTimeout(this.changeLoading, 100),
-        this.getCharacters()
+        setTimeout(this.changeLoading, 100)
     }
 }
 </script>
@@ -123,3 +121,5 @@ export default {
         }
     }
 </style>
+
+``

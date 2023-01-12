@@ -7,15 +7,13 @@ export default {
         }
     }
 }
+
 </script>
 
 <template>
     <div class="container">
         <div class="row">
             <div id="select-container" class="col-3 mb-3 p-3">
-                <div>
-                    Hai selezionato: {{ selected }}
-                </div>
                 <select name="" id="" class="form-select" v-model="selected" @change="$emit('selectedCharacter', selected)">
                     <option disabled value="">Seleziona una categoria</option>
                     <option v-for="archetypes in categoriesList"> {{ archetypes }} </option>
