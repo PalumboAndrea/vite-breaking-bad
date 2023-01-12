@@ -11,6 +11,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
     .lds-spinner {
     color: official;
     display: inline-block;

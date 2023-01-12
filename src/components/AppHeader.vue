@@ -1,26 +1,7 @@
 <script>
-import {store} from '../../store';
-import axios from 'axios';
 
 export default {
     name: 'AppHeader',
-    data(){
-      return{
-        store,
-      }
-    },
-    methods:{
-        getCharacters(){
-            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0', {
-            })
-            .then((response) => {
-                this.store.cardsList = response.data.data;
-            })
-        }
-    },
-    created(){
-        this.getCharacters();
-    }
 }
 </script>
 
