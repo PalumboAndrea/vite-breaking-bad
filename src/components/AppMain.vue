@@ -30,17 +30,6 @@ export default {
                 this.store.cardsList = response.data.data; 
             })
 
-        },
-        getCharacters(selectedCategory){
-            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0', {
-              params: {
-                category: selectedCategory,
-              }
-            })
-            .then((response) => {
-                console.log()
-                this.store.cardsList = response.data.data; 
-            })
         }
     },
     created(){
@@ -79,10 +68,8 @@ export default {
                     </div>
                 </section> 
             </div>       
-
         </div>
         
-
     </div>
 </template>
 
