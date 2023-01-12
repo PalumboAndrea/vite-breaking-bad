@@ -1,7 +1,6 @@
 <script>
 import AppMain from './components/AppMain.vue'
 import AppHeader from './components/AppHeader.vue'
-import {store} from '../store';
 
 export default{
   components: {
@@ -10,7 +9,7 @@ export default{
   },
   data(){
       return{
-        store,
+        
       }
     }
 }
